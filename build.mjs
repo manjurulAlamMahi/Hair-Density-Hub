@@ -52,7 +52,7 @@ const footer = () => `<footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
       <a href="index.html" class="logo logo-light">
-        <span class="logo-mark"><svg viewBox="0 0 32 32" width="34" height="34"><rect width="32" height="32" rx="9" fill="currentColor"/><path d="M16 26V14M16 18c0-5 3-8 8-8 0 5-3 8-8 8zM16 21c0-4-3-7-7-7 0 4 3 7 7 7z" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="logo-mark"><img src="assets/img/logo-96.png" srcset="assets/img/logo-96.png 1x, assets/img/logo-192.png 2x" width="56" height="56" alt=""></span>
         <span class="logo-text">Hair Density Hub<small>Skin &amp; Hair Transplant Clinic · Lucknow</small></span>
       </a>
       <p>Advanced techniques, natural results, permanent solutions. Trusted by 3000+ happy clients.</p>
@@ -180,7 +180,29 @@ ${items.map(faqItem).join('\n')}
 </section>
 `;
 
-const avatar = d => `<span class="doc-avatar" aria-hidden="true">${d.initials}</span>`;
+const founderSection = (soft = false) => `<section class="section founder${soft ? ' section-soft' : ''}" id="founder">
+  <div class="container founder-grid">
+    <figure class="founder-photo">
+      <img src="assets/img/founder-752.webp" srcset="assets/img/founder-480.webp 480w, assets/img/founder-752.webp 752w" sizes="(max-width: 960px) 90vw, 460px" width="752" height="1052" alt="The founder of Hair Density Hub at the clinic in Lucknow" loading="lazy">
+    </figure>
+    <div class="founder-text">
+      <span class="eyebrow">Meet the founder</span>
+      <h2 class="section-title">Results that look like your own hair</h2>
+      <p class="lead">Hair Density Hub was started with a simple idea: a hair transplant should never look like a transplant. Every hairline is drawn by hand around the patient's face, age and donor area, and agreed with them before the procedure begins.</p>
+      <blockquote class="founder-quote">“I'd rather tell someone they don't need surgery yet than give them a result they'll regret. Honest advice comes first.”</blockquote>
+      <p class="founder-sign">Founder, Hair Density Hub ${demo}</p>
+      <div class="founder-actions">
+        <a href="contact.html#booking" class="btn btn-gold" data-book>Book a consultation</a>
+        <a href="doctors.html" class="btn btn-ghost">Meet the team</a>
+      </div>
+    </div>
+  </div>
+</section>
+`;
+
+const avatar = d => d.photo
+  ? `<img class="doc-photo" src="${d.photo}" width="480" height="672" alt="${esc(d.name)}" loading="lazy">`
+  : `<span class="doc-avatar" aria-hidden="true">${d.initials}</span>`;
 const doctorCard = (d, full) => `      <article class="doc-card">
         ${avatar(d)}
         <div class="doc-body">
@@ -275,8 +297,8 @@ page('index.html', {
   active: 'home', search: true,
   body: fill(sec('hero'), { heroBar: heroBar('home') }) + '\n' + sec('booking') + '\n' + sec('stats') + '\n' + treatmentsSection() + '\n'
     + sec('results').replace('<div class="results-cta">', '<div class="results-cta">\n      <a href="before-after.html" class="btn btn-outline-light">See before &amp; after</a>') + '\n'
-    + sec('why') + '\n'
-    + `<section class="section section-soft" id="doctors">
+    + sec('why') + '\n' + founderSection(true)
+    + `<section class="section" id="doctors">
   <div class="container">
 ${sectionHead('Our doctors', 'The team behind your result')}
     <div class="doc-grid">
@@ -376,7 +398,7 @@ page('doctors.html', {
   body: pageHero({ active: 'doctors', crumbs: [[null, 'Doctors']], eyebrow: 'Our doctors', title: 'The team behind your result', lead: 'Your consultation, hairline design and procedure are led by doctors, with a trained clinical team at every step.' })
     + `<section class="section">
   <div class="container">
-    <p class="demo-note">${demo} Doctor names, photos and qualifications on this page are placeholders. Replace them with the clinic's real team.</p>
+    <p class="demo-note">${demo} Names, qualifications and the second and third doctors are placeholders. Replace them with the clinic's real team.</p>
     <div class="doc-list">
 ${doctors.map(d => doctorCard(d, true)).join('\n')}
     </div>
@@ -477,7 +499,7 @@ page('about.html', {
   active: 'about',
   body: pageHero({ active: 'about', crumbs: [[null, 'About Us']], eyebrow: 'About us', title: 'Natural results. Permanent solutions.', lead: 'A dedicated skin and hair transplant clinic in Lucknow, planning every result around the person in front of us.' })
     + sec('why').replace(/<a href="#booking" class="btn btn-primary" data-book>Book a consultation<\/a>/, '<a href="doctors.html" class="btn btn-primary">Meet the doctors</a>')
-    + sec('stats') + sec('journey') + reviewsSection() + ctaBand()
+    + founderSection(true) + sec('stats') + sec('journey') + reviewsSection() + ctaBand()
 });
 
 /* FAQ */

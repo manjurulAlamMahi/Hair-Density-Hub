@@ -4,9 +4,9 @@
 /* ---------- DEMO: doctors ---------- */
 export const doctors = [
   {
-    name: 'Dr. Aarav Mehta', initials: 'AM', role: 'Lead Hair Transplant Surgeon',
-    quals: 'MBBS, MD (Dermatology)', years: '12+ years',
-    bio: 'Leads every hair transplant at the clinic, from hairline design to the final review. Special interest in high-density FUE and corrective work.',
+    name: 'Founder', initials: 'HD', role: 'Founder · Hair Transplant Specialist', photo: 'assets/img/founder-480.webp',
+    quals: 'Qualifications to be added', years: 'Experience to be added',
+    bio: 'Founded Hair Density Hub to offer natural-looking hair transplants in Lucknow, with every hairline designed by hand and agreed with the patient first.',
     focus: ['FUE & Sapphire FUE', 'Hairline design', 'Repair transplants']
   },
   {
