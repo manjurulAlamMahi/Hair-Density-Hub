@@ -1,0 +1,74 @@
+<!-- ============ ONLINE CONSULTATION MODAL ============ -->
+<div class="cmodal" id="consultModal" role="dialog" aria-modal="true" aria-labelledby="cmTitle" aria-hidden="true">
+  <div class="cm-panel">
+    <div class="cm-head">
+      <h2 id="cmTitle">Online consultation</h2>
+      <p>Book a video call with our doctor.</p>
+      <span class="cm-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4zM15 16H5V8h10v8z"/></svg>
+        <span data-cfg="consultBadge">Video call</span>
+      </span>
+      <button type="button" class="cm-close" data-cm-close aria-label="Close">&times;</button>
+    </div>
+
+    <form class="cm-body" id="consultForm" novalidate>
+      <div class="cm-progress" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <p class="cm-step-label" id="cmStepLabel">1/4 · Your details</p>
+
+      <fieldset class="cm-step active" data-cm-step="1">
+        <legend class="sr-only">Your details</legend>
+        <label class="cm-field"><span>Full name</span><input type="text" name="name" autocomplete="name" required></label>
+        <label class="cm-field"><span>Email address</span><input type="email" name="email" autocomplete="email" required></label>
+        <label class="cm-field"><span>Country you are in</span><select name="country" id="cmCountry"></select></label>
+        <label class="cm-field"><span>Consultation language</span><select name="language" id="cmLanguage"></select></label>
+        <label class="cm-field"><span>Phone number (WhatsApp)</span>
+          <span class="cm-phone"><select name="cc" id="cmCc" aria-label="Country code"></select><input type="tel" name="phone" inputmode="tel" autocomplete="tel-national" required></span>
+        </label>
+      </fieldset>
+
+      <fieldset class="cm-step" data-cm-step="2">
+        <legend class="sr-only">Your concern</legend>
+        <div class="cm-field"><span>What would you like to discuss?</span>
+          <div class="cm-chips">
+            <label class="chip"><input type="radio" name="concern" value="Hair transplant" required><span>Hair transplant</span></label>
+            <label class="chip"><input type="radio" name="concern" value="Beard / eyebrow transplant"><span>Beard / eyebrow</span></label>
+            <label class="chip"><input type="radio" name="concern" value="Hair fall / PRP / GFC"><span>Hair fall · PRP</span></label>
+            <label class="chip"><input type="radio" name="concern" value="Female hair loss"><span>Female hair loss</span></label>
+            <label class="chip"><input type="radio" name="concern" value="Skin / laser"><span>Skin · Laser</span></label>
+            <label class="chip"><input type="radio" name="concern" value="Not sure yet"><span>Not sure yet</span></label>
+          </div>
+        </div>
+        <label class="cm-field"><span>Tell us a little more <em>(optional)</em></span>
+          <textarea name="notes" rows="4" placeholder="How long you've had hair loss, any previous treatment, when you could travel..."></textarea></label>
+        <p class="cm-hint">You can send scalp photos on WhatsApp after booking: front, top, crown and back of the head.</p>
+      </fieldset>
+
+      <fieldset class="cm-step" data-cm-step="3">
+        <legend class="sr-only">Day and time</legend>
+        <div class="cm-field"><span>Choose a day</span><div class="cm-days" id="cmDays" role="radiogroup" aria-label="Day"></div></div>
+        <div class="cm-field"><span>Choose a time <small id="cmTz"></small></span><div class="cm-times" id="cmTimes" role="radiogroup" aria-label="Time"></div></div>
+      </fieldset>
+
+      <div class="cm-step" data-cm-step="4">
+        <dl class="cm-summary" id="cmSummary"></dl>
+        <label class="consent"><input type="checkbox" name="consent" required>
+          <span>I agree to be contacted by Hair Density Hub by email, call or WhatsApp about this consultation.</span></label>
+      </div>
+
+      <div class="cm-step cm-done" data-cm-step="5" aria-live="polite">
+        <div class="done-icon"><svg viewBox="0 0 52 52" width="56" height="56"><circle cx="26" cy="26" r="25" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 27l7 7 15-15" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Request received</h3>
+        <p>Reference <strong id="cmRef"></strong>. Send it to us on WhatsApp so the clinic can confirm your slot and share the video link.</p>
+        <a href="#" class="btn btn-green btn-block" id="cmWa" target="_blank" rel="noopener">Send on WhatsApp</a>
+      </div>
+
+      <p class="field-error" id="cmError"></p>
+    </form>
+
+    <div class="cm-foot">
+      <button type="button" class="btn btn-ghost" id="cmBack">← Back</button>
+      <button type="button" class="btn btn-primary" id="cmNext">Continue →</button>
+    </div>
+  </div>
+</div>
+

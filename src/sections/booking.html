@@ -1,0 +1,148 @@
+<!-- ============ QUICK BOOKING ============ -->
+<section class="section booking-section" id="booking">
+  <div class="container booking-grid">
+    <div class="booking-intro">
+      <span class="eyebrow">Quick Booking · No login</span>
+      <h2 class="section-title">Book your consultation in under a minute</h2>
+      <p class="lead">Pick a concern, choose a slot and leave your number. No account, no passwords. Our Lucknow team calls you back to confirm.</p>
+      <ul class="check-list">
+        <li>Personal scalp analysis at your first visit</li>
+        <li>In-clinic or video consultation</li>
+        <li>Confirmation by phone or WhatsApp, usually within working hours</li>
+        <li>Your details are only used to arrange your appointment</li>
+      </ul>
+      <div class="booking-contact">
+        <div>
+          <span>Prefer to talk?</span>
+          <a href="tel:+919670962400">+91 96709 62400</a>
+        </div>
+        <div>
+          <span>Clinic</span>
+          <p data-cfg="address">Lucknow, Uttar Pradesh</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="booking-card" id="bookingCard">
+      <ol class="steps" aria-label="Booking steps">
+        <li class="active" data-step-dot="1"><span>1</span>Concern</li>
+        <li data-step-dot="2"><span>2</span>Date &amp; time</li>
+        <li data-step-dot="3"><span>3</span>Your details</li>
+      </ol>
+
+      <form id="bookingForm" novalidate>
+        <!-- STEP 1 -->
+        <fieldset class="step active" data-step="1">
+          <legend>What would you like help with?</legend>
+          <div class="chip-grid" id="concernChips">
+            <label class="chip"><input type="radio" name="concern" value="Hair Transplant (FUE / Sapphire FUE)" required><span>Hair Transplant</span></label>
+            <label class="chip"><input type="radio" name="concern" value="Hair Fall / PRP / GFC"><span>Hair Fall · PRP · GFC</span></label>
+            <label class="chip"><input type="radio" name="concern" value="Beard / Eyebrow Transplant"><span>Beard / Eyebrow</span></label>
+            <label class="chip"><input type="radio" name="concern" value="Female Hair Loss"><span>Female Hair Loss</span></label>
+            <label class="chip"><input type="radio" name="concern" value="Laser Hair Reduction"><span>Laser Hair Reduction</span></label>
+            <label class="chip"><input type="radio" name="concern" value="Acne / Scars / Pigmentation"><span>Acne · Scars · Pigmentation</span></label>
+            <label class="chip"><input type="radio" name="concern" value="Anti-Ageing / HIFU / Fillers"><span>Anti-Ageing · HIFU</span></label>
+            <label class="chip"><input type="radio" name="concern" value="Not sure / General consultation"><span>Not sure yet</span></label>
+          </div>
+
+          <legend class="mt">Consultation type</legend>
+          <div class="toggle-group">
+            <label class="toggle"><input type="radio" name="mode" value="In-clinic visit" checked><span>
+              <svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3 2 9v2h20V9L12 3zm-7 9v7H3v2h18v-2h-2v-7h-2v7h-3v-7h-4v7H7v-7H5z"/></svg>In-clinic visit</span></label>
+            <label class="toggle"><input type="radio" name="mode" value="Video consultation"><span>
+              <svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4z"/></svg>Video call</span></label>
+          </div>
+          <p class="field-error" data-error="1"></p>
+          <div class="step-actions">
+            <span></span>
+            <button type="button" class="btn btn-primary" data-next>Continue →</button>
+          </div>
+        </fieldset>
+
+        <!-- STEP 2 -->
+        <fieldset class="step" data-step="2">
+          <legend>Choose a day</legend>
+          <div class="date-strip-wrap">
+            <button type="button" class="strip-arrow" data-strip="-1" aria-label="Earlier dates">‹</button>
+            <div class="date-strip" id="dateStrip" role="radiogroup" aria-label="Appointment date"></div>
+            <button type="button" class="strip-arrow" data-strip="1" aria-label="Later dates">›</button>
+          </div>
+
+          <legend class="mt">Choose a time <small id="slotHint"></small></legend>
+          <div class="slot-groups" id="slotGroups"></div>
+          <p class="field-error" data-error="2"></p>
+          <div class="step-actions">
+            <button type="button" class="btn btn-ghost" data-prev>← Back</button>
+            <button type="button" class="btn btn-primary" data-next>Continue →</button>
+          </div>
+        </fieldset>
+
+        <!-- STEP 3 -->
+        <fieldset class="step" data-step="3">
+          <legend>Your details</legend>
+          <div class="form-grid">
+            <label class="field full">
+              <span>Full name *</span>
+              <input type="text" name="name" autocomplete="name" required placeholder="e.g. Rahul Deshmukh">
+            </label>
+            <label class="field">
+              <span>Mobile (WhatsApp) *</span>
+              <div class="phone-input">
+                <select name="cc" aria-label="Country code">
+                  <option value="+91" selected>+91</option>
+                  <option value="+971">+971</option>
+                  <option value="+880">+880</option>
+                  <option value="+44">+44</option>
+                  <option value="+1">+1</option>
+                </select>
+                <input type="tel" name="phone" inputmode="numeric" autocomplete="tel-national" required placeholder="98XXXXXXXX">
+              </div>
+            </label>
+            <label class="field">
+              <span>Gender</span>
+              <select name="gender">
+                <option value="">Prefer not to say</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label class="field full">
+              <span>Anything we should know? <em>(optional)</em></span>
+              <textarea name="notes" rows="3" placeholder="e.g. Hair fall for 2 years, crown thinning, previous treatment..."></textarea>
+            </label>
+            <label class="consent full">
+              <input type="checkbox" name="consent" required>
+              <span>I agree to be contacted by Hair Density Hub by call / WhatsApp about this appointment.</span>
+            </label>
+          </div>
+          <p class="field-error" data-error="3"></p>
+          <div class="step-actions">
+            <button type="button" class="btn btn-ghost" data-prev>← Back</button>
+            <button type="submit" class="btn btn-gold">Request Appointment</button>
+          </div>
+        </fieldset>
+
+        <!-- DONE -->
+        <div class="step step-done" data-step="4" aria-live="polite">
+          <div class="done-icon">
+            <svg viewBox="0 0 52 52" width="64" height="64"><circle cx="26" cy="26" r="25" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 27l7 7 15-15" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Request received</h3>
+          <p class="done-ref">Reference <strong id="bookingRef">NR-0000</strong></p>
+          <dl class="summary" id="bookingSummary"></dl>
+          <p class="done-note">Tap <strong>Send on WhatsApp</strong> so the clinic gets your request right away. They'll confirm the slot with you.</p>
+          <div class="done-actions">
+            <a href="#" class="btn btn-green btn-block" id="waConfirm" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M19.4 4.6A10.4 10.4 0 0 0 2.9 17.1L1.5 22.5l5.5-1.4a10.4 10.4 0 0 0 5 1.3c5.7 0 10.4-4.7 10.4-10.4 0-2.8-1.1-5.4-3-7.4zM12 20.6c-1.5 0-3.1-.4-4.4-1.2l-.3-.2-3.3.9.9-3.2-.2-.3a8.6 8.6 0 1 1 7.3 4z"/></svg>
+              Send on WhatsApp
+            </a>
+            <button type="button" class="btn btn-ghost btn-block" id="icsBtn">Add to my calendar</button>
+            <button type="button" class="link-btn" id="newBooking">Make another booking</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
