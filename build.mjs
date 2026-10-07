@@ -35,24 +35,12 @@ const TABS = [
   ['international-patients.html', 'International', 'international'], ['about.html', 'About Us', 'about'], ['faq.html', 'F.A.Q', 'faq'],
   ['blog.html', 'Blog', 'blog'], ['contact.html', 'Contact', 'contact']
 ];
-const caret = '<svg class="caret" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
-const navHtml = (active, sub) => NAV.map(n => {
-  const cls = n.key === active ? ' class="active" aria-current="page"' : '';
-  if (!n.sub) return `      <a href="${n.href}"${cls}>${esc(n.label)}</a>`;
-  return `      <div class="nav-item">
-        <a href="${n.href}"${cls}>${esc(n.label)} ${caret}</a>
-        <div class="nav-sub">
-${n.sub.map(([h, l, k]) => `          <a href="${h}"${k === sub ? ' class="active"' : ''}>${esc(l)}</a>`).join('\n')}
-          <a href="treatments.html" class="nav-sub-all">All treatments →</a>
-        </div>
-      </div>`;
-}).join('\n');
 const drawerHtml = active => [['index.html', 'Home', 'home'], ...NAV.map(n => [n.href, n.label, n.key]), ['graft-estimator.html', 'Graft Estimator', 'estimator']]
   .map(([h, l, k]) => `      <a href="${h}"${k === active ? ' class="active"' : ''}>${esc(l)}</a>`).join('\n');
-const heroBar = active => `<div class="hero-bar">
+const heroBar = (active, id = 'heroTabs', cls = 'hero-bar') => `<div class="${cls}">
     <div class="container hero-bar-inner">
       <button class="hero-bar-arrow" data-scroll="-1" aria-label="Previous">‹</button>
-      <nav class="hero-tabs" id="heroTabs" aria-label="Pages">
+      <nav class="hero-tabs" id="${id}" aria-label="Pages">
 ${TABS.map(([h, l, k]) => `        <a href="${h}"${k === active ? ' class="active" aria-current="page"' : ''}>${esc(l)}</a>`).join('\n')}
       </nav>
       <button class="hero-bar-arrow" data-scroll="1" aria-label="Next">›</button>
@@ -272,7 +260,7 @@ const pages = [];
 function page(file, { title, description, active, sub, body, search }) {
   const hasBooking = body.includes('id="bookingForm"');
   let html = fill(head0, { title: esc(title), description: esc(description) }) + '\n'
-    + fill(topbar, { nav: navHtml(active, sub), drawerNav: drawerHtml(active) })
+    + fill(topbar, { drawerNav: drawerHtml(active), dock: heroBar(active, 'dockTabs', 'hero-bar dock-bar') })
     + '\n<main id="top">\n\n' + body + '\n</main>\n\n' + modal + '\n' + footer() + '\n' + floating;
   if (search) html = html.replace('<script src="assets/js/main.js"></script>', '<script src="assets/js/search-index.js"></script>\n<script src="assets/js/main.js"></script>');
   if (!hasBooking) html = html.replace(/href="#booking"/g, 'href="contact.html#booking"');
