@@ -197,6 +197,16 @@ const founderSection = (soft = false) => `<section class="section founder${soft 
       </div>
     </div>
   </div>
+  <div class="container founder-gallery">
+    <figure>
+      <img src="assets/img/hairline-laser-800.jpg" srcset="assets/img/hairline-laser-480.jpg 480w, assets/img/hairline-laser-800.jpg 800w" sizes="(max-width: 960px) 46vw, 440px" width="800" height="1000" alt="Measuring a patient's hairline with a laser guide and gold ruler at Hair Density Hub" loading="lazy">
+      <figcaption>Finding the centre line with a laser guide before drawing the hairline.</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/img/hairline-marking-800.jpg" srcset="assets/img/hairline-marking-480.jpg 480w, assets/img/hairline-marking-800.jpg 800w" sizes="(max-width: 960px) 46vw, 440px" width="800" height="1000" alt="A new hairline marked in pen on a patient's forehead before the transplant" loading="lazy">
+      <figcaption>The new hairline is marked and checked with the patient before the procedure.</figcaption>
+    </figure>
+  </div>
 </section>
 `;
 
