@@ -40,7 +40,6 @@ export const packages = [
 ];
 export const priceList = [
   ['Hair consultation & scalp analysis', '₹800'],
-  ['Online video consultation', 'Free'],
   ['FUE hair transplant (per graft, guide)', '₹25–35'],
   ['Beard or eyebrow transplant', 'From ₹35,000'],
   ['PRP therapy (per session)', '₹4,000'],
@@ -63,7 +62,7 @@ export const cases = [
 /* ---------- Reviews (DEMO) ---------- */
 export const reviews = [
   ['Rahul, 31', 'Lucknow', 'The doctor drew the hairline with me twice before we agreed. Ten months later nobody can tell.'],
-  ['Tanvir, 36', 'Dhaka', 'They planned everything around my flight dates. The video consultation answered most of my questions before I travelled.'],
+  ['Tanvir, 36', 'Dhaka', 'They planned everything around my flight dates. Sending photos on WhatsApp first answered most of my questions before I travelled.'],
   ['Priya, 29', 'Kanpur', 'I came in for hair fall after my pregnancy. They found low iron first, then started PRP. The shedding has stopped.']
 ];
 
@@ -87,8 +86,8 @@ export const faqGroups = [
     ['Do you offer EMI?', 'Ask the clinic about payment options at your consultation.']
   ]],
   ['International patients', [
-    ['Can I have a consultation before I travel?', 'Yes. Book an online video consultation and send photos of your scalp. The doctor will give you an initial plan and graft estimate before you book flights.'],
+    ['Can I have a consultation before I travel?', 'Yes. Send photos of your scalp on WhatsApp. The doctor will give you an initial plan and graft estimate before you book flights.'],
     ['How many days should I stay in Lucknow?', 'Plan for 3 to 4 days: one for the in-person consultation and tests, one for the procedure and one for the first wash before you fly home.'],
-    ['Can you help with travel arrangements?', 'The team can share hotel options near the clinic and help arrange an airport transfer. Ask during your online consultation.']
+    ['Can you help with travel arrangements?', 'The team can share hotel options near the clinic and help arrange an airport transfer. Just ask the team on WhatsApp.']
   ]]
 ];

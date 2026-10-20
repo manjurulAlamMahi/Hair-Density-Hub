@@ -11,16 +11,17 @@ const CONFIG = {
   // TODO: put the full street address here; it's shown on the page, in the map and in calendar invites
   address: 'Lucknow, Uttar Pradesh',
   mapQuery: 'Hair Density Hub Lucknow', // what Google Maps searches for (use the full address once known)
-  // Patient / surgery review videos for the Results section. Each entry is either
-  //   { youtube: 'VIDEO_ID', title: '...' }   or   { instagram: 'https://www.instagram.com/reel/XXXX/' }
-  // Leave empty to show the "Watch on Instagram" tiles instead.
+  // Patient / surgery review videos for the Results section. Paste any YouTube link
+  // (watch, youtu.be or Shorts), e.g. { youtube: 'https://youtu.be/XXXX', title: 'Patient review' }
+  // Leave empty to show the "Watch on YouTube" tiles that link to the channel.
   videos: [],
+  youtubeChannel: 'https://www.youtube.com/@hairdensityhub',
   // Optional: paste a Formspree / Web3Forms / Google Apps Script URL to also receive bookings by email.
   // Leave empty to use WhatsApp only.
   formEndpoint: '',
-  openHour: 10,                         // first slot 10:00
-  closeHour: 20,                        // last slot starts 19:30
-  slotMinutes: 30,
+  openHour: 0,                          // bookable 24 hours: first slot 12:00 AM
+  closeHour: 24,                        // last slot starts 11:00 PM
+  slotMinutes: 60,
   closedDays: [],                       // e.g. [0] to close Sundays (0 = Sun … 6 = Sat)
   daysAhead: 21,
   // Online consultation (video call) modal
@@ -44,7 +45,7 @@ $('#year').textContent = new Date().getFullYear();
 
 /* ---------- Generic WhatsApp links ---------- */
 $$('.js-wa').forEach(a => {
-  a.href = waLink(`Hi ${CONFIG.clinicName}, I'd like to know more about your treatments.`);
+  a.href = waLink(a.dataset.waText || `Hi ${CONFIG.clinicName}, I'd like to know more about your treatments.`);
   a.target = '_blank';
   a.rel = 'noopener';
 });
@@ -308,9 +309,10 @@ if (form) {
     const date = fromISO(iso);
     const avail = new Set(availableSlots(date));
     const groups = [
-      { name: 'Morning', from: 0, to: 12 * 60 },
-      { name: 'Afternoon', from: 12 * 60, to: 16 * 60 },
-      { name: 'Evening', from: 16 * 60, to: 24 * 60 }
+      { name: 'Night', from: 0, to: 6 * 60 },
+      { name: 'Morning', from: 6 * 60, to: 12 * 60 },
+      { name: 'Afternoon', from: 12 * 60, to: 17 * 60 },
+      { name: 'Evening', from: 17 * 60, to: 24 * 60 }
     ];
     const prev = form.elements.time ? (form.querySelector('input[name="time"]:checked') || {}).value : null;
     $('#slotGroups').innerHTML = groups.map(g => {
@@ -349,6 +351,8 @@ if (form) {
       if (name.value.trim().length < 2) return fail('Please enter your name.', name);
       const okPhone = form.elements.cc.value === '+91' ? /^[6-9]\d{9}$/.test(phone.value) : /^\d{6,14}$/.test(phone.value);
       if (!okPhone) return fail('Please enter a valid mobile number' + (form.elements.cc.value === '+91' ? ' (10 digits).' : '.'), phone);
+      const age = form.elements.age;
+      if (!(+age.value >= 1 && +age.value <= 100)) return fail('Please enter your age.', age);
       if (!form.elements.consent.checked) return fail('Please tick the box so we can contact you.');
     }
     err.textContent = '';
@@ -380,13 +384,14 @@ if (form) {
       minutes: +form.querySelector('input[name="time"]:checked').dataset.min,
       name: f.name.value.trim(),
       phone: `${f.cc.value} ${f.phone.value}`,
+      age: f.age.value,
       gender: f.gender.value,
       notes: f.notes.value.trim()
     };
     lastBooking = booking;
 
     const rows = [
-      ['Name', booking.name], ['Mobile', booking.phone], ['Concern', booking.concern],
+      ['Name', booking.name], ['Age', booking.age], ['Mobile', booking.phone], ['Concern', booking.concern],
       ['Type', booking.mode], ['Date', booking.dateText], ['Time', booking.time]
     ];
     $('#bookingRef').textContent = ref;
@@ -398,6 +403,7 @@ if (form) {
       `Ref: ${ref}`,
       `Name: ${booking.name}`,
       `Mobile: ${booking.phone}`,
+      `Age: ${booking.age}`,
       booking.gender ? `Gender: ${booking.gender}` : null,
       `Concern: ${booking.concern}`,
       `Type: ${booking.mode}`,
@@ -573,34 +579,31 @@ document.addEventListener('keydown', e => {
   if (drawer.classList.contains('open')) setDrawer(false);
 });
 
-/* Results: render CONFIG.videos (YouTube thumbnails open in the lightbox, Instagram reels embed inline) */
+/* Results: render CONFIG.videos (YouTube thumbnails open in the lightbox) */
 (() => {
   const grid = $('#reelGrid');
-  if (!CONFIG.videos.length || !grid) return;
+  // Accepts a bare ID or any YouTube URL: watch?v=, youtu.be/, shorts/, embed/
+  const ytId = v => (String(v).match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([\w-]{11})/) || [, String(v).trim()])[1];
+  const videos = CONFIG.videos.filter(v => v.youtube).map(v => ({ ...v, id: ytId(v.youtube), short: /shorts\//.test(v.youtube) }));
+  if (!videos.length || !grid) return;
   grid.classList.add('has-videos');
-  grid.innerHTML = CONFIG.videos.map(v => v.youtube
-    ? `<button class="reel-tile reel-yt" data-yt="${escapeHTML(v.youtube)}">
-         <img src="https://img.youtube.com/vi/${escapeHTML(v.youtube)}/hqdefault.jpg" alt="" loading="lazy">
+  grid.innerHTML = videos.map(v => `<button class="reel-tile reel-yt" data-yt="${escapeHTML(v.id)}"${v.short ? ' data-vertical' : ''}>
+         <img src="https://img.youtube.com/vi/${escapeHTML(v.id)}/hqdefault.jpg" alt="" loading="lazy">
          <span class="reel-play"><svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></span>
          ${v.title ? `<strong>${escapeHTML(v.title)}</strong>` : ''}
-       </button>`
-    : `<div class="reel-ig"><blockquote class="instagram-media" data-instgrm-permalink="${escapeHTML(v.instagram)}" data-instgrm-version="14">
-         <a href="${escapeHTML(v.instagram)}" target="_blank" rel="noopener">Watch on Instagram</a></blockquote></div>`
-  ).join('');
-  $$('.reel-yt', grid).forEach(b => b.addEventListener('click', () => openVideo(b.dataset.yt)));
-  if (CONFIG.videos.some(v => v.instagram)) {
-    document.body.appendChild(Object.assign(document.createElement('script'), { src: 'https://www.instagram.com/embed.js', async: true }));
-  }
+       </button>`).join('');
+  $$('.reel-yt', grid).forEach(b => b.addEventListener('click', () => openVideo(b.dataset.yt, b.hasAttribute('data-vertical'))));
 })();
 
 /* Address + map from CONFIG */
 $$('[data-cfg="address"]').forEach(el => (el.textContent = CONFIG.address));
-if ($('#mapFrame')) $('#mapFrame').src = `https://www.google.com/maps?q=${encodeURIComponent(CONFIG.mapQuery)}&output=embed`;
-if ($('#directionsBtn')) $('#directionsBtn').href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONFIG.mapQuery)}`;
+$$('#mapFrame, .js-map').forEach(f => { f.src = `https://www.google.com/maps?q=${encodeURIComponent(CONFIG.mapQuery)}&output=embed`; });
+$$('#directionsBtn, .js-directions').forEach(a => { a.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONFIG.mapQuery)}`; });
 
 /* ---------- Online consultation modal (4 steps) ---------- */
 (() => {
   const modal = $('#consultModal');
+  if (!modal) return;
   const f = $('#consultForm');
   const next = $('#cmNext');
   const back = $('#cmBack');
