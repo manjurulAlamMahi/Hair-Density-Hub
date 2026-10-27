@@ -786,6 +786,9 @@ body.cm-lock { overflow: hidden; }
 .detail-grid, .article-grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 56px; align-items: start; }
 .detail-main h2 { font-size: clamp(24px, 2.6vw, 30px); margin: 0 0 16px; }
 .detail-main h2:not(:first-child) { margin-top: 40px; }
+.detail-photo { margin: 28px 0 0; }
+.detail-photo img { width: 100%; height: auto; display: block; border-radius: 18px; box-shadow: var(--shadow); }
+.detail-photo figcaption { font-size: 13.5px; color: var(--mu); margin-top: 10px; }
 .detail-main p { color: var(--mu); font-size: 16.5px; }
 .detail-steps { list-style: none; counter-reset: st; padding: 0; margin: 0; display: grid; gap: 14px; }
 .detail-steps li { counter-increment: st; position: relative; padding: 20px 22px 20px 74px; background: var(--soft); border-radius: var(--radius); }
@@ -914,6 +917,7 @@ body.cm-lock { overflow: hidden; }
 .post-body > p:not(.post-meta) { color: var(--mu); font-size: 15px; flex: 1; margin: 0 0 16px; }
 .article { font-size: 17px; line-height: 1.75; max-width: 720px; }
 .article h2 { font-size: 26px; margin: 36px 0 12px; }
+.article h3 { font-size: 20px; margin: 28px 0 10px; }
 .article p, .article li { color: #464d44; }
 .article ul { padding-left: 22px; }
 .article li { margin-bottom: 8px; }

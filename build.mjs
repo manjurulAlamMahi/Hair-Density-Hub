@@ -342,6 +342,10 @@ for (const t of treatments) {
     <article class="detail-main">
       <h2>What is ${esc(t.name)}?</h2>
 ${t.intro.map(p => `      <p>${esc(p)}</p>`).join('\n')}
+${t.photo ? `      <figure class="detail-photo">
+        <img src="assets/img/${t.photo[0]}-1400.jpg" srcset="assets/img/${t.photo[0]}-800.jpg 800w, assets/img/${t.photo[0]}-1400.jpg 1400w" sizes="(max-width: 960px) 92vw, 720px" width="1400" height="1050" alt="${esc(t.photo[1])}" loading="lazy">
+        <figcaption>${esc(t.photo[2])}</figcaption>
+      </figure>` : ''}
       <h2>Who it's for</h2>
       <ul class="check-list">
 ${t.suitable.map(s => `        <li>${esc(s)}</li>`).join('\n')}
@@ -469,7 +473,15 @@ ${priceList.map(([k, v]) => `        <tr><th scope="row">${esc(k)}</th><td>${esc
     <a href="graft-estimator.html" class="btn btn-primary">Try the Graft Estimator</a>
   </div>
 </section>
-` + faqSection(faqGroups.find(g => g[0] === 'Cost')[1], true).replace('<section class="section"', '<section class="section section-soft"') + ctaBand()
+<section class="section section-soft">
+  <div class="container">
+${sectionHead('Cost guide', 'What decides the price of a hair transplant?', 'Grafts, technique, donor area and more, explained in our complete guide.')}
+    <div class="post-grid">
+${posts.filter(p => p.cat === 'Cost').map(postCard).join('\n')}
+    </div>
+  </div>
+</section>
+` + faqSection(faqGroups.find(g => g[0] === 'Cost')[1], true) + ctaBand()
 });
 
 /* Graft estimator */

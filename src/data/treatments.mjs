@@ -1,6 +1,7 @@
 // One entry per treatment. Each becomes its own page (<slug>.html), a card on the
 // Treatments page and an entry in the site search.
 // `price` values are DEMO figures: replace them with the clinic's real prices.
+// `photo` (optional): [file in assets/img without -800/-1400.jpg, alt text, caption].
 
 export const treatments = [
   {
@@ -11,6 +12,7 @@ export const treatments = [
     icon: '<path d="M10 30c0-9 6-16 14-16s14 7 14 16" /><path d="M16 22l-2-6M22 18l-1-7M28 18l1-7M33 22l2-6"/><path d="M10 30v6M38 30v6"/>',
     short: 'Healthy follicles are moved one by one from the donor area to thinning zones. No linear scar, with a natural-looking hairline.',
     lead: 'Follicular Unit Extraction moves your own healthy follicles, one at a time, from the back of the scalp to the areas that are thinning.',
+    photo: ['treatment2', 'The centre of a patient\'s new hairline being found with a laser guide before an FUE hair transplant', 'The hairline is measured with a laser guide and agreed with you before extraction begins.'],
     intro: [
       'FUE is the most widely used hair transplant technique today. Each follicular unit (a natural group of 1 to 4 hairs) is taken out individually with a fine punch, so there is no strip of skin removed and no stitched scar at the back of the head.',
       'The extracted grafts are then placed into tiny channels in the recipient area. The angle, direction and spacing of every channel are planned so that the new hair grows the same way your original hair did.'
@@ -65,6 +67,39 @@ export const treatments = [
       ['Is Sapphire FUE better than regular FUE?', 'It is a refinement of the channel-opening step. For many patients it allows denser packing and slightly faster healing, but the skill of the team matters more than the blade.'],
       ['Does it cost more?', 'Usually yes, because the blades are more expensive. Your quote will show the difference so you can choose.'],
       ['Is recovery different?', 'Recovery is similar to classic FUE. Some patients notice less redness in the first week.']
+    ]
+  },
+  {
+    slug: 'swift-hair-transplant',
+    name: 'Swift Hair Transplant',
+    cat: 'hair',
+    concern: 'Hair Transplant (FUE / Sapphire FUE)',
+    icon: '<path d="M26 4L12 27h11l-3 17 16-24H25z"/>',
+    short: 'Grafts are extracted and implanted in small batches, so each one spends as little time outside the body as possible.',
+    lead: 'A small-batch transplant: grafts are extracted and implanted in stages, using precision punches, sapphire slits and a titanium implanter.',
+    photo: ['treatment1', 'A patient\'s hairline being measured with a laser guide and gold ruler at Hair Density Hub', 'Every Swift session starts with a hairline measured and drawn around your face.'],
+    intro: [
+      'In a standard FUE session all the grafts are usually extracted first and implanted afterwards. Swift Hair Transplant works in small batches instead: a group of grafts is extracted, then implanted, before the next group is taken.',
+      'Extraction is done with precision punches, the recipient area is opened with sapphire slits, and the grafts are placed with a titanium implanter. Working in stages keeps the time each graft spends outside the body short.'
+    ],
+    suitable: [
+      'Men with a receding hairline or crown thinning and a stable pattern of hair loss',
+      'Patients with a good donor area who are suitable for FUE',
+      'People who want sapphire-opened channels together with implanter placement',
+      'Anyone looking for a natural hairline designed around their face'
+    ],
+    steps: [
+      ['Hairline design', 'The doctor measures and marks the new hairline with you before anything starts.'],
+      ['Batch extraction', 'Under local anaesthesia, a small batch of grafts is taken with precision punches.'],
+      ['Sapphire slits', 'Fine channels are opened in the recipient area with sapphire blades at the planned angle.'],
+      ['Titanium implanter', 'The batch is implanted straight away, then the next batch is extracted, until the plan is complete.']
+    ],
+    facts: [['Procedure time', '6–8 hours'], ['Anaesthesia', 'Local'], ['Back to work', '2–3 days'], ['Final result', '10–12 months']],
+    price: 'From ₹65,000',
+    faqs: [
+      ['How is Swift different from FUE or Sapphire FUE?', 'Swift uses the same principles, but grafts are extracted and implanted in small batches rather than all extracted first. It combines precision punches, sapphire slits and a titanium implanter.'],
+      ['Is Swift Hair Transplant right for me?', 'It depends on your donor area, hair-loss pattern and goals. The doctor will recommend the most suitable technique at your consultation.'],
+      ['Is recovery different?', 'Recovery is similar to FUE: small crusts for about a week, shock loss in the first weeks and new growth from around month three.']
     ]
   },
   {
@@ -266,6 +301,7 @@ export const treatments = [
 export const cards = [
   { page: 'fue-hair-transplant' },
   { page: 'sapphire-fue' },
+  { page: 'swift-hair-transplant' },
   { page: 'beard-eyebrow-transplant' },
   { page: 'female-hair-loss' },
   { page: 'prp-gfc-therapy' },

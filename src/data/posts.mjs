@@ -3,6 +3,69 @@
 
 export const posts = [
   {
+    slug: 'hair-transplant-cost-guide',
+    title: 'How much does a hair transplant cost? A complete guide',
+    date: '2026-10-28',
+    cat: 'Cost',
+    mins: 5,
+    excerpt: 'There is no fixed price for a hair transplant. Here is what decides the cost, why two patients can pay different prices, and how to get an estimate.',
+    body: `
+<p>For many people considering a hair transplant, one of the first questions is, naturally, “How much will it cost?”</p>
+<p>There is no fixed price that applies to every patient. The total cost can vary depending on the number of grafts needed, the hair transplant technique used, the extent of hair loss, the condition of the donor area, and the clinic and medical team involved.</p>
+<p>Whether you are considering <a href="fue-hair-transplant.html">FUE</a>, DHI, <a href="sapphire-fue.html">Sapphire FUE</a>, <a href="swift-hair-transplant.html">Swift Hair Transplant</a>, or another hair restoration technique, the treatment should be chosen according to your individual hair-loss pattern and goals, rather than based on price alone.</p>
+<h2>What determines the cost of a hair transplant?</h2>
+<h3>1. Number of grafts required</h3>
+<p>The number of grafts needed is one of the main factors that affects the cost of a hair transplant.</p>
+<p>Someone with limited hair loss may need treatment in a smaller area, while a patient with more extensive hair loss may require additional grafts to achieve the desired coverage and density.</p>
+<p>The required graft count depends on several factors, including:</p>
+<ul>
+<li>The size of the bald or thinning area</li>
+<li>Existing hair density</li>
+<li>Desired coverage</li>
+<li>Hair thickness and characteristics</li>
+<li>Available donor hair</li>
+</ul>
+<p>In general, a higher number of grafts means a higher overall treatment cost.</p>
+<h3>2. Hair transplant technique</h3>
+<p>The technique used can also affect the overall cost. Different methods involve different approaches to extracting, preparing, and implanting the grafts.</p>
+<ul>
+<li><strong>FUE (Follicular Unit Extraction):</strong> individual follicular grafts are extracted from the donor area and then implanted into the recipient area.</li>
+<li><strong>DHI (Direct Hair Implantation):</strong> grafts are generally implanted using an implanter device, allowing the placement of individual grafts during the implantation process.</li>
+<li><strong>Sapphire FUE:</strong> a sapphire blade is used to create the recipient channels before the extracted grafts are implanted.</li>
+<li><strong>Swift Hair Transplant:</strong> this approach uses a small-batch process in which grafts are extracted and implanted in stages. It uses precision punches for extraction, sapphire slitting for the recipient area, and a titanium implanter for implantation.</li>
+</ul>
+<p>The most expensive technique is not automatically the right choice for every patient. The suitable method depends on factors such as the donor area, hair-loss pattern, graft characteristics, and the patient’s treatment goals.</p>
+<h2>Why can two patients pay different prices?</h2>
+<p>Two patients can have similar-looking hair loss but still require very different treatment plans.</p>
+<p>For example, one patient may have good donor density and require fewer grafts, while another may need more grafts because a larger area needs to be covered or a different level of density is desired.</p>
+<p>The donor area also plays an important role. Since a hair transplant uses a limited supply of donor grafts, those grafts need to be planned carefully.</p>
+<p>For this reason, treatment planning should not simply focus on using as many grafts as possible. The available donor hair should be used thoughtfully, taking both the current hair-loss pattern and future needs into consideration.</p>
+<h2>Is a more expensive hair transplant better?</h2>
+<p>Not necessarily.</p>
+<p>The price of a hair transplant should be considered alongside other factors, including the experience of the medical team, the clinic’s facilities, the quality of previous results, graft handling, extraction and implantation techniques, and post-operative care.</p>
+<p>A higher price does not by itself guarantee a better result. What matters is whether the treatment plan is appropriate for the patient’s individual situation and whether the procedure is carried out with proper care and planning.</p>
+<h2>Can you get an exact price before consultation?</h2>
+<p>An initial estimate may sometimes be possible from photographs, but the final treatment cost should be based on an individual assessment.</p>
+<p>During the assessment, the clinic needs to consider:</p>
+<ul>
+<li>How many grafts are required</li>
+<li>Which areas need treatment</li>
+<li>The condition of the donor area</li>
+<li>The most appropriate transplantation technique</li>
+<li>The desired density and coverage</li>
+<li>Whether one procedure is sufficient</li>
+</ul>
+<p>This helps create a treatment plan based on the patient’s actual needs rather than applying the same package to everyone.</p>
+<h2>Get an estimate for your hair transplant</h2>
+<p>If you are considering a hair transplant and would like to understand how many grafts you may need, you can <a href="contact.html#booking">contact our team</a> for an initial assessment.</p>
+<p>Clear photographs of the front, top, sides, and donor area can help the team review your hair-loss pattern and provide an initial indication of the likely graft requirement and suitable treatment options. For a quick first idea, try the <a href="graft-estimator.html">Graft Estimator</a>.</p>
+<p>The final graft count and treatment cost will be confirmed after a proper consultation and assessment.</p>
+<h2>Choosing the right treatment</h2>
+<p>A hair transplant is a long-term decision, so cost should not be the only consideration when choosing a clinic or treatment method.</p>
+<p>Look at the suitability of the technique, the condition of your donor area, the experience of the medical team, and the quality of previous results.</p>
+<p><strong>The goal is not simply to transplant more hair.</strong> It is to use the available donor hair carefully to create a natural-looking result while taking your future hair-loss pattern into account.</p>`
+  },
+  {
     slug: 'hair-transplant-recovery-week-by-week',
     title: 'Hair transplant recovery, week by week',
     date: '2026-09-18',

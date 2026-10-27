@@ -14,6 +14,12 @@ window.SEARCH_INDEX = [
  },
  {
   "type": "Treatment",
+  "title": "Swift Hair Transplant",
+  "text": "Grafts are extracted and implanted in small batches, so each one spends as little time outside the body as possible. A small-batch transplant: grafts are extracted and implanted in stages, using precision punches, sapphire slits and a titanium implanter.",
+  "url": "swift-hair-transplant.html"
+ },
+ {
+  "type": "Treatment",
   "title": "Beard & Eyebrow Transplant",
   "text": "Fill patchy beards and shape fuller brows using your own hair, angled to match natural growth direction. Fill patchy beards, shape the moustache or rebuild thin eyebrows using follicles from your own scalp.",
   "url": "beard-eyebrow-transplant.html"
@@ -155,6 +161,12 @@ window.SEARCH_INDEX = [
   "title": "Can you help with travel arrangements?",
   "text": "The team can share hotel options near the clinic and help arrange an airport transfer. Ask during your online consultation.",
   "url": "faq.html#q-can-you-help-with-travel-arrangements"
+ },
+ {
+  "type": "Article",
+  "title": "How much does a hair transplant cost? A complete guide",
+  "text": "There is no fixed price for a hair transplant. Here is what decides the cost, why two patients can pay different prices, and how to get an estimate.",
+  "url": "blog-hair-transplant-cost-guide.html"
  },
  {
   "type": "Article",
