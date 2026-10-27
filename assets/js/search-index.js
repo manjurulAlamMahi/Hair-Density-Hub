@@ -147,7 +147,7 @@ window.SEARCH_INDEX = [
  {
   "type": "Question",
   "title": "Can I have a consultation before I travel?",
-  "text": "Yes. Book an online video consultation and send photos of your scalp. The doctor will give you an initial plan and graft estimate before you book flights.",
+  "text": "Yes. Send photos of your scalp on WhatsApp. The doctor will give you an initial plan and graft estimate before you book flights.",
   "url": "faq.html#q-can-i-have-a-consultation-before-i-travel"
  },
  {
@@ -159,7 +159,7 @@ window.SEARCH_INDEX = [
  {
   "type": "Question",
   "title": "Can you help with travel arrangements?",
-  "text": "The team can share hotel options near the clinic and help arrange an airport transfer. Ask during your online consultation.",
+  "text": "The team can share hotel options near the clinic and help arrange an airport transfer. Just ask the team on WhatsApp.",
   "url": "faq.html#q-can-you-help-with-travel-arrangements"
  },
  {

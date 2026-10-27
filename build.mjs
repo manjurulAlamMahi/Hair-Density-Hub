@@ -55,7 +55,7 @@ const footer = () => `<footer class="site-footer">
         <span class="logo-mark"><img src="assets/img/logo-96.png" srcset="assets/img/logo-96.png 1x, assets/img/logo-192.png 2x" width="56" height="56" alt=""></span>
         <span class="logo-text">Hair Density Hub<small>Skin &amp; Hair Transplant Clinic · Lucknow</small></span>
       </a>
-      <p>Advanced techniques, natural results, permanent solutions. Trusted by 3000+ happy clients.</p>
+      <p>Advanced techniques, natural results, permanent solutions. Trusted by 7000+ happy clients.</p>
     </div>
     <div>
       <h4>Treatments</h4>
@@ -101,9 +101,9 @@ const pageHero = ({ active, crumbs = [], eyebrow, title, lead, actions = true })
     <h1>${title}</h1>
     ${lead ? `<p class="lead">${lead}</p>` : ''}
     ${actions ? `<div class="page-hero-actions">
-      <button type="button" class="btn btn-gold" data-consult>
-        <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4zM15 16H5V8h10v8z"/></svg>
-        Online Consultation</button>
+      ${active === 'results' ? '<a href="contact.html#booking" class="btn btn-gold" data-book>Book a consultation</a>' : `<a href="before-after.html" class="btn btn-gold">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5zm2 0v9.6l3.3-3.3a1 1 0 0 1 1.4 0l3.3 3.3 1.3-1.3a1 1 0 0 1 1.4 0l1.3 1.3V5H6zm9.5 1.5a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5z"/></svg>
+        See Our Results</a>`}
       <a href="#" class="btn btn-outline-light js-wa">Quick Appointment</a>
     </div>` : ''}
   </div>
@@ -117,14 +117,14 @@ const sectionHead = (eyebrow, title, lead) => `    <div class="section-head">
       ${lead ? `<p class="lead">${lead}</p>` : ''}
     </div>`;
 
-const ctaBand = (title = 'Not sure where to start?', text = 'Send a few photos on WhatsApp or book a free online consultation. The doctor will tell you honestly what will work for you.') => `<section class="cta-band">
+const ctaBand = (title = 'Not sure where to start?', text = 'Send a few photos on WhatsApp or see what we have done for patients like you. The doctor will tell you honestly what will work for you.', primary = '<a href="before-after.html" class="btn btn-gold">See Our Results</a>') => `<section class="cta-band">
   <div class="container cta-band-inner">
     <div>
       <h2>${title}</h2>
       <p>${text}</p>
     </div>
     <div class="cta-band-actions">
-      <button type="button" class="btn btn-gold" data-consult>Online Consultation</button>
+      ${primary}
       <a href="#" class="btn btn-outline-light js-wa">Chat on WhatsApp</a>
     </div>
   </div>
@@ -266,7 +266,7 @@ const intlTeaser = () => `<section class="intl-band">
     <div>
       <span class="eyebrow">International patients</span>
       <h2>Travelling to Lucknow for your transplant?</h2>
-      <p>Consultation, procedure, hotel and transfers planned around your dates, starting with a video call from home.</p>
+      <p>Consultation, procedure, hotel and transfers planned around your dates, starting with a few photos sent from home.</p>
     </div>
     <a href="international-patients.html" class="btn btn-gold">See how it works</a>
   </div>
@@ -287,13 +287,13 @@ function fmtDate(iso) {
 }
 
 /* ---------- Page assembly ---------- */
-const head0 = part('head'), topbar = part('topbar-header'), modal = part('modal'), floating = part('floating');
+const head0 = part('head'), topbar = part('topbar-header'), floating = part('floating');
 const pages = [];
 function page(file, { title, description, active, sub, body, search }) {
   const hasBooking = body.includes('id="bookingForm"');
   let html = fill(head0, { title: esc(title), description: esc(description) }) + '\n'
     + fill(topbar, { drawerNav: drawerHtml(active), dock: heroBar(active, 'dockTabs', 'hero-bar dock-bar') })
-    + '\n<main id="top">\n\n' + body + '\n</main>\n\n' + modal + '\n' + footer() + '\n' + floating;
+    + '\n<main id="top">\n\n' + body + '\n</main>\n\n' + footer() + '\n' + floating;
   if (search) html = html.replace('<script src="assets/js/main.js"></script>', '<script src="assets/js/search-index.js"></script>\n<script src="assets/js/main.js"></script>');
   if (!hasBooking) html = html.replace(/href="#booking"/g, 'href="contact.html#booking"');
   if (!body.includes('id="contact"')) html = html.replace(/href="#contact"/g, 'href="contact.html#contact"');
@@ -363,7 +363,7 @@ ${t.facts.map(([k, v]) => `          <div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></
         </dl>
         <div class="aside-price"><span>Guide price ${demo}</span><strong>${esc(t.price)}</strong><small>Final quote after your consultation.</small></div>
         <a href="contact.html#booking" class="btn btn-gold btn-block" data-book="${esc(t.concern)}">Book this treatment</a>
-        <button type="button" class="btn btn-ghost btn-block" data-consult>Online consultation</button>
+        <a href="before-after.html" class="btn btn-ghost btn-block">See our results</a>
       </div>
       ${t.cat === 'hair' && t.slug !== 'prp-gfc-therapy' && t.slug !== 'female-hair-loss' ? `<a href="graft-estimator.html" class="aside-link">How many grafts do I need? <span>Try the Graft Estimator →</span></a>` : ''}
     </aside>
@@ -401,7 +401,7 @@ ${cases.map(caseCard).join('\n')}
     </div>
   </div>
 </section>
-` + sec('results') + reviewsSection() + ctaBand('Want results like these?', 'Send photos of your scalp for a free assessment and an estimate of the grafts you need.')
+` + sec('results') + reviewsSection() + ctaBand('Want results like these?', 'Send photos of your scalp for a free assessment and an estimate of the grafts you need.', '<a href="contact.html#booking" class="btn btn-gold" data-book>Book a consultation</a>')
 });
 
 /* Doctors */
@@ -428,7 +428,7 @@ ${sectionHead('How we work', 'What you can expect from us')}
     </div>
   </div>
 </section>
-` + ctaBand('Talk to a doctor', 'Book a video call with the doctor before you decide anything.')
+` + ctaBand('Talk to a doctor', 'See real patient results, or send your photos on WhatsApp before you decide anything.')
 });
 
 /* Pricing */
@@ -496,9 +496,9 @@ page('graft-estimator.html', {
 /* International patients */
 page('international-patients.html', {
   title: `International Patients: Hair Transplant in Lucknow | ${SITE}`,
-  description: 'Travelling to Lucknow for a hair transplant? Online consultation, travel planning, airport pickup, hotel, procedure and follow-up, planned around your dates.',
+  description: 'Travelling to Lucknow for a hair transplant? Photo assessment, travel planning, airport pickup, hotel, procedure and follow-up, planned around your dates.',
   active: 'international',
-  body: pageHero({ active: 'international', crumbs: [[null, 'International Patients']], eyebrow: 'International patients', title: 'The international patient experience', lead: 'For patients travelling to Lucknow, everything is organised in one plan, from your first video call to your follow-up reviews at home.' })
+  body: pageHero({ active: 'international', crumbs: [[null, 'International Patients']], eyebrow: 'International patients', title: 'The international patient experience', lead: 'For patients travelling to Lucknow, everything is organised in one plan, from your first photo review to your follow-up reviews at home.' })
     + sec('international').replace('<section class="section section-soft" id="international">', '<section class="section" id="international">')
     + `<section class="section section-soft">
   <div class="container">
@@ -511,13 +511,13 @@ ${sectionHead('Planning your trip', 'Good to know before you travel')}
     </div>
   </div>
 </section>
-` + faqSection(faqGroups.find(g => g[0] === 'International patients')[1], true) + ctaBand('Start with a video call', 'Book an online consultation from home. The doctor will review your photos and give you a plan before you book flights.')
+` + faqSection(faqGroups.find(g => g[0] === 'International patients')[1], true) + ctaBand('Start from home', 'Send photos of your scalp on WhatsApp. The doctor will review them and give you a plan before you book flights.')
 });
 
 /* About */
 page('about.html', {
   title: `About Us | ${SITE}, Lucknow`,
-  description: 'Hair Density Hub is a dedicated skin and hair transplant clinic in Lucknow. Natural results, permanent solutions and 3000+ happy clients.',
+  description: 'Hair Density Hub is a dedicated skin and hair transplant clinic in Lucknow. Natural results, permanent solutions and 7000+ happy clients.',
   active: 'about',
   body: pageHero({ active: 'about', crumbs: [[null, 'About Us']], eyebrow: 'About us', title: 'Natural results. Permanent solutions.', lead: 'A dedicated skin and hair transplant clinic in Lucknow, planning every result around the person in front of us.' })
     + sec('why').replace(/<a href="#booking" class="btn btn-primary" data-book>Book a consultation<\/a>/, '<a href="doctors.html" class="btn btn-primary">Meet the doctors</a>')
@@ -574,8 +574,8 @@ for (const p of posts) {
     <aside class="detail-aside">
       <div class="aside-card">
         <h3>Have a question about your hair?</h3>
-        <p>Book a free online consultation and the doctor will review your photos.</p>
-        <button type="button" class="btn btn-gold btn-block" data-consult>Online consultation</button>
+        <p>See real results from our patients, or send photos on WhatsApp and the doctor will review them.</p>
+        <a href="before-after.html" class="btn btn-gold btn-block">See our results</a>
         <a href="#" class="btn btn-ghost btn-block js-wa">WhatsApp us</a>
       </div>
     </aside>
@@ -599,7 +599,7 @@ page('contact.html', {
   description: 'Book a consultation at Hair Density Hub, Lucknow in under a minute. Call, WhatsApp or visit the clinic.',
   active: 'contact',
   body: pageHero({ active: 'contact', crumbs: [[null, 'Contact']], eyebrow: 'Contact', title: 'Book a consultation', lead: 'Choose a time below, call or WhatsApp us, or visit the clinic in Lucknow.', actions: false })
-    + sec('booking') + sec('contact')
+    + sec('booking').replace(/\n\s*<div class="booking-map">[\s\S]*?<\/div>\n\s*<\/div>\n/, '\n') + sec('contact')
 });
 
 /* ---------- Search index (home page search box) ---------- */
