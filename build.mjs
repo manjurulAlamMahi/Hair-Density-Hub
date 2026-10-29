@@ -183,7 +183,7 @@ ${items.map(faqItem).join('\n')}
 const founderSection = (soft = false) => `<section class="section founder${soft ? ' section-soft' : ''}" id="founder">
   <div class="container founder-grid">
     <figure class="founder-photo">
-      <img src="assets/img/founder-752.webp" srcset="assets/img/founder-480.webp 480w, assets/img/founder-752.webp 752w" sizes="(max-width: 960px) 90vw, 460px" width="752" height="1052" alt="The founder of Hair Density Hub at the clinic in Lucknow" loading="lazy">
+      <img src="assets/img/placeholder.svg" width="752" height="1052" alt="Photo coming soon" loading="lazy">
     </figure>
     <div class="founder-text">
       <span class="eyebrow">Meet the founder</span>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+  <rect width="800" height="1000" fill="#efece6"/>
+  <g fill="none" stroke="#b9ad94" stroke-width="14" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="290" y="410" width="220" height="170" rx="18"/>
+    <circle cx="350" cy="465" r="20"/>
+    <path d="M300 560l70-70 50 50 30-30 50 50"/>
+  </g>
+  <text x="400" y="640" text-anchor="middle" font-family="Jost, Arial, sans-serif" font-size="30" letter-spacing="3" fill="#9a8e74">PHOTO COMING SOON</text>
+</svg>

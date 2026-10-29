@@ -1063,7 +1063,7 @@ body.cm-lock { overflow: hidden; }
   background:
     linear-gradient(180deg, rgba(10,10,12,.78) 0%, rgba(10,10,12,.84) 60%, rgba(10,10,12,.92) 100%),
     radial-gradient(circle at 15% 20%, rgba(226,178,58,.25), transparent 45%),
-    url("../img/surgery-1494.webp") center 30% / cover no-repeat, #111113;
+    #111113;
 }
 
 /* Why us: photo */
@@ -1081,7 +1081,7 @@ body.cm-lock { overflow: hidden; }
 .founder-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
 /* Doctor photo (cards with a real photo) */
-.doc-photo { flex-shrink: 0; width: 76px; height: 76px; border-radius: 50%; object-fit: cover; object-position: 66% 8%; box-shadow: 0 0 0 2px var(--gold); }
+.doc-photo { flex-shrink: 0; width: 76px; height: 76px; border-radius: 50%; object-fit: cover; object-position: center; box-shadow: 0 0 0 2px var(--gold); }
 .doc-list .doc-photo { width: 160px; height: 200px; border-radius: 18px; }
 
 /* Founder: hairline design photos */
@@ -1097,7 +1097,7 @@ body.cm-lock { overflow: hidden; }
   .founder-gallery { gap: 12px; margin-top: 48px; }
   .founder-gallery img { border-radius: 12px; }
   .founder-gallery figcaption { font-size: 12.5px; }
-  .doc-list .doc-photo { width: 100%; height: 340px; object-position: 66% 10%; }
+  .doc-list .doc-photo { width: 100%; height: 340px; }
   .founder-quote { font-size: 17px; }
   .founder-actions { flex-direction: column; }
 }
